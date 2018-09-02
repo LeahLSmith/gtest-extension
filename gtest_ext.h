@@ -47,11 +47,11 @@ static void catch_alarm(int sig)
     } }
 
 // This macro indicates the start of a block that checks whether the statements
-// it contains executes with a given time. This block must be followed by an
-// ASSERT_TIMED_BLOCK_END macro
+// it contains executes with a given time. This block must be followed by
+// statements that are tested and the ASSERT_TIMED_BLOCK_END macro
 //
 // The implementation is modeleed after ASSERT_TIME, but splits the implementation
-// into a BLOCK_START and BLOCK_END that encloses the statements that are tested
+// into a BLOCK_START and BLOCK_END that encloses the statements that are tested.
 //
 // @param name name of the timed block
 // @param usecs microseconds to wait before the statements in the block are
