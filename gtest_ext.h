@@ -106,8 +106,8 @@ static void catch_alarm(int sig)
    ualarm(0, 0); \
   }
 
-// This macro checks if the output of an executable program matches an expected
-// output.
+// This macro checks if the output of an executable program is equal to an
+// expected output.
 //
 // @param prog_name name of the executable file
 // @param input     keyboard input sent to the program
@@ -117,3 +117,16 @@ static void catch_alarm(int sig)
     GTEST_FATAL_FAILURE_("      cannot test '" prog_name "': no such file"); \
   } \
   ASSERT_EQ(main_output(prog_name, input), output);
+
+
+// This macro checks if the output of an executable program matches an expected
+// output. The macro can accept any Google Mock matchers.
+//
+// @param prog_name name of the executable file
+// @param input     keyboard input sent to the program
+// @param matcher   matcher used to check the program output
+#define ASSERT_MAIN_OUTPUT_THAT(prog_name, input, matcher) \
+  if ( access( prog_name, F_OK ) == -1 ) { \
+    GTEST_FATAL_FAILURE_("      cannot test '" prog_name "': no such file"); \
+  } \
+  ASSERT_THAT(main_output(prog_name, input), matcher);
