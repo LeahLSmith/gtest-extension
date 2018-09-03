@@ -1,7 +1,7 @@
 # gtest-extension
 This header adds time-based assertion macros for the [google test](https://github.com/google/googletest) framework.
 
-**Availability: Linux**
+**Availability**: Linux
 
 # Usage
 Simply include this header file in your google unit test and compile with the google test library.
